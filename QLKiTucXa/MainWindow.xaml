@@ -1,0 +1,21 @@
+﻿<Window x:Class="QLKiTucXa.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:QLKiTucXa"
+        mc:Ignorable="d"
+        Title="QUẢN LÝ KÍ TÚC XÁ" Height="350" Width="525">
+    <StackPanel>
+        <Menu>
+            <MenuItem Header="Quản lý kí túc xá">
+                <MenuItem Header="Quản lý hợp đồng" Name="menuHopdong" Click="menuHopdong_Click"></MenuItem>
+                <MenuItem Header="Quản lý sinh viên" Name="menuSinhvien" Click="menuSinhvien_Click"></MenuItem>
+                <MenuItem Header="Quản lý phòng" Name="menuPhong"></MenuItem>
+                <MenuItem Header="Quản lý nhân viên" Name="menuNhanvien"></MenuItem>
+                <MenuItem Header="Quản lý điện" Name="menuDien" Click="menuDien_Click"></MenuItem>
+                <MenuItem Header="Quản lý khu" Name="menuKhu" Click="menuKhu_Click"></MenuItem>
+            </MenuItem>
+        </Menu>
+    </StackPanel>
+</Window>

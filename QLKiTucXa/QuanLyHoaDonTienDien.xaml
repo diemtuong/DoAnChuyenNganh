@@ -1,0 +1,103 @@
+﻿<Window x:Class="QLKiTucXa.QuanLyHoaDonTienDien"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:QLKiTucXa"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib"
+        mc:Ignorable="d"
+        Title="QuanLyHoaDonTienDien" Height="450" Width="800">
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <StackPanel>
+            <GroupBox Header="Thông tin Hóa Đơn">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Label Grid.Row="0" Grid.Column="0" Content="Số hóa đơn"/>
+                    <Label Grid.Row="0" Grid.Column="1" Content="Ngày lập hóa đơn"/>
+                    <Label Grid.Row="0" Grid.Column="2" Content="Ngày ghi" />
+                    <TextBox Grid.Row="1" Grid.Column="0" Name="txtSohd" IsReadOnly="True"/>
+                    <DatePicker Grid.Row="1" Grid.Column="1" Name="dpNgaylaphd" SelectedDate="{x:Static sys:DateTime.Now}"/>
+                    <DatePicker Grid.Row="1" Grid.Column="2" Name="dpNgayghi" SelectedDate="{x:Static sys:DateTime.Now}"/>
+
+                </Grid>
+            </GroupBox>
+            <GroupBox  >
+                <StackPanel>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition />
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <Label Grid.Row="0" Grid.Column="0" Content="Mã phòng"/>
+                        <Label Grid.Row="0" Grid.Column="1" Content="Mã nhân viên"/>
+                        <Label Grid.Row="0" Grid.Column="2" Content="Mã công tơ" Height="26" VerticalAlignment="Top" />
+                        <Label Grid.Row="0" Grid.Column="3" Content="Chỉ số đầu"/>
+                        <Label Grid.Row="0" Grid.Column="4" Content="Chỉ số cuối"/>
+                        <Label Grid.Row="0" Grid.Column="5" Content="Đơn giá"/>
+                        <ComboBox Grid.Row="1" Grid.Column="0" Name="cmbMaPhong" SelectedValuePath="maphong" DisplayMemberPath="maphong" SelectionChanged="cmbMaPhong_SelectionChanged"/>
+                        <ComboBox Grid.Row="1" Grid.Column="1" Name="cmbMaNhanVien" SelectedValuePath="manv" DisplayMemberPath="manv" />
+                        <!--<ComboBox Grid.Row="1" Grid.Column="2" Name="cmbMaCongTo" SelectedValuePath="macongto" DisplayMemberPath="macongto" />-->
+                        <TextBox Grid.Row="1" Grid.Column="2" Name="txbMaCongTo" IsEnabled="True"/>
+                        <TextBox Grid.Row="1" Grid.Column="3" Name="txtdau"/>
+                        <TextBox Grid.Row="1" Grid.Column="4" Name="txtcuoi"/>
+                        <TextBox Grid.Row="1" Grid.Column="5" Name="txtdongia"/>
+
+
+                    </Grid>
+                    <DataGrid Name="dgCTHD" IsReadOnly="True" AutoGenerateColumns="False" SelectedValuePath="sohd" CanUserAddRows="False" >
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Binding="{Binding sohd}" Header="Số hóa đơn"/>
+                            <DataGridTextColumn Binding="{Binding maphong}" Header="Mã phòng"/>
+                            <DataGridTextColumn Binding="{Binding manv}" Header="Mã nhân viên" />
+                            <DataGridTextColumn Binding="{Binding macongto}" Header="Mã công tơ"/>
+                            <DataGridTextColumn Binding="{Binding ngaylaphd}" Header="Ngày lập"/>
+                            <DataGridTextColumn Binding="{Binding ngayghi}" Header="Ngày ghi"/>
+                            <DataGridTextColumn Binding="{Binding chisodau}" Header="Chỉ số đầu"  />
+                            <DataGridTextColumn Binding="{Binding chisocuoi}" Header="Chỉ số cuối" />
+                            <DataGridTextColumn Binding="{Binding tongtien}" Header="Tổng tiền"/>
+
+
+                        </DataGrid.Columns>
+
+                    </DataGrid>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+
+                        </Grid.RowDefinitions>
+
+                        <Button Grid.Row="0" Grid.Column="1" Content="Lập hóa đơn" Name="btnLap" />
+                        <!--<Button Grid.Row="0" Grid.Column="2" Content="Xóa Hóa đơn" Name="btnXoa" Click="btnXoa_Click" Height="20" VerticalAlignment="Top" />-->
+
+                    </Grid>
+
+                </StackPanel>
+            </GroupBox>
+        </StackPanel>
+    </ScrollViewer>
+
+</Window>

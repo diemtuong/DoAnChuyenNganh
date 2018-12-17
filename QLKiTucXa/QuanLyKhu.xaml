@@ -1,0 +1,92 @@
+﻿<Window x:Class="QLKiTucXa.QuanLyKhu"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:QLKiTucXa"
+        Title="QuanLyKhu" Height="350" Width="700" Loaded="Window_Loaded">
+    <Window.CommandBindings>
+        <CommandBinding Command="local:CMyCommands.them" Executed="CommandBinding_Executed_themKhu" CanExecute="CommandBinding_CanExecute_themKhu"></CommandBinding>
+        <CommandBinding Command="local:CMyCommands.xoa" Executed="CommandBinding_Executed_xoaKhu" CanExecute="CommandBinding_CanExecute_xoaKhu"></CommandBinding>
+        <CommandBinding Command="local:CMyCommands.sua" Executed="CommandBinding_Executed_suaKhu" CanExecute="CommandBinding_CanExecute_suaKhu"></CommandBinding>
+        <CommandBinding Command="local:CMyCommands.timkiem" Executed="CommandBinding_Executed_timkiemKhu" CanExecute="CommandBinding_CanExecute_timkiemKhu"></CommandBinding>
+        <CommandBinding Command="local:CMyCommands.lammoi" Executed="CommandBinding_Executed_lammoiKhu" CanExecute="CommandBinding_CanExecute_lammoiKhu"></CommandBinding>
+    </Window.CommandBindings>
+    <StackPanel>
+        <StackPanel.Resources>
+            <Style TargetType="Label" x:Key="stLabel">
+                <Setter Property="Margin" Value="20 0 "></Setter>
+                <Setter Property="Width" Value="100"></Setter>
+                <Setter Property="Height" Value="30"></Setter>
+                <Setter Property="FontWeight" Value="Bold"></Setter>
+            </Style>
+
+            <Style TargetType="TextBox" x:Key="stTextBox">
+                <Setter Property="Margin" Value="5"></Setter>
+                <Setter Property="Width" Value="200"></Setter>
+                <Setter Property="Height" Value="25"></Setter>
+            </Style>
+
+            <Style TargetType="ComboBox" x:Key="stTComboBox">
+                <Setter Property="Margin" Value="5"></Setter>
+                <Setter Property="Width" Value="200"></Setter>
+            </Style>
+
+            <Style TargetType="Button" x:Key="stButton">
+                <Setter Property="Width" Value="70"></Setter>
+                <Setter Property="Height" Value="25"></Setter>
+                <Setter Property="Margin" Value="15 5 20 5"></Setter>
+                <Setter Property="Background" Value="LightGray"></Setter>
+            </Style>
+            <Style TargetType="DatePicker" x:Key="stDatePicker">
+                <Setter Property="Width" Value="200"></Setter>
+                <Setter Property="Height" Value="25"></Setter>
+                <Setter Property="Margin" Value="5"></Setter>
+            </Style>
+        </StackPanel.Resources>
+        <DockPanel>
+            <Label Content="QUẢN LÝ KHU" FontSize="30" FontWeight="Bold" HorizontalAlignment="Center"></Label>
+        </DockPanel>
+
+        <DockPanel Height="220">
+            <StackPanel Margin="10 10 0 10" Name="spKhu" >
+                <DockPanel Margin="0 0 0 5">
+                    <Label Content="Mã khu: " Style="{StaticResource ResourceKey=stLabel}"/>
+                    <TextBox  Text="Nhập vào một kí tự" Style="{StaticResource ResourceKey=stTextBox}" x:Name="txtMakhu" />
+                </DockPanel>
+
+                <DockPanel Margin=" 0 0 0 5">
+                    <Label Content="Tên khu: " Style="{StaticResource ResourceKey=stLabel}"/>
+                    <TextBox Text="{Binding tenkhu,Mode=OneWay}" Style="{StaticResource ResourceKey=stTextBox}" x:Name="txtTenkhu"/>
+                </DockPanel>
+
+                <DockPanel Margin=" 0 0 0 5">
+                    <Label Content="Số lượng tối đa: " Style="{StaticResource ResourceKey=stLabel}" VerticalAlignment="Center"/>
+                    <TextBox Text="{Binding soluongtoida,Mode=OneWay}" Style="{StaticResource ResourceKey=stTextBox}" x:Name="txtSoluongtoida"/>
+                </DockPanel>
+
+                <DockPanel HorizontalAlignment="Center" Margin="30 0 0 0">
+                    <Button Style="{StaticResource ResourceKey=stButton}" x:Name="btnThem" Content="Thêm" Command="local:CMyCommands.them" />
+                    <Button Style="{StaticResource ResourceKey=stButton}" x:Name="btnXoa" Content="Xóa" Command="local:CMyCommands.xoa"/>
+                    <Button Style="{StaticResource ResourceKey=stButton}" x:Name="btnSua" Content="Sửa" Command="local:CMyCommands.sua"/>
+                </DockPanel>
+
+                <DockPanel HorizontalAlignment="Center"  Margin="30 0 0 0">
+                    <Button Style="{StaticResource ResourceKey=stButton}" x:Name="btnTimkiem" Content="Tìm kiếm" Command="local:CMyCommands.timkiem"/>
+                    <Button Style="{StaticResource ResourceKey=stButton}" x:Name="btnLammoi" Content="Làm mới" Command="local:CMyCommands.lammoi" />
+                    <Button Style="{StaticResource ResourceKey=stButton}" x:Name="btnThoat" Content="Thoát" Click="btnThoat_Click" />
+                </DockPanel>
+            </StackPanel>
+
+            <StackPanel >
+                <DataGrid IsReadOnly="True" Name="dgKhu" SelectedValuePath="makhu" AutoGenerateColumns="False" Height="200" Margin="10" SelectionChanged="dgKhu_SelectionChanged" >
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Mã khu" Binding="{Binding makhu}"></DataGridTextColumn>
+                        <DataGridTextColumn Header="Tên khu" Binding="{Binding tenkhu}"></DataGridTextColumn>
+                        <DataGridTextColumn Header="Số lượng tối đa" Binding="{Binding soluongtoida}"></DataGridTextColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </StackPanel>
+        </DockPanel >
+    </StackPanel>
+</Window>

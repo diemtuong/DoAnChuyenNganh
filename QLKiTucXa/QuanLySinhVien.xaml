@@ -1,0 +1,153 @@
+﻿<Window x:Class="QLKiTucXa.QuanLySinhVien"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:QLKiTucXa"
+        mc:Ignorable="d"
+        Title="QuanLySinhVien" Height="500" Width="850" Loaded="Window_Loaded">
+    <Window.CommandBindings>
+        <CommandBinding Command="local:CMyCommands.them" Executed="CommandBinding_Executed_themSV" CanExecute="CommandBinding_CanExecute_themSV"></CommandBinding>
+        <CommandBinding Command="local:CMyCommands.xoa" Executed="CommandBinding_Executed_xoaSV" CanExecute="CommandBinding_CanExecute_xoaSV"></CommandBinding>
+        <CommandBinding Command="local:CMyCommands.timkiem" Executed="CommandBinding_Executed_timkiemSV" CanExecute="CommandBinding_CanExecute_timkiemSV"></CommandBinding>
+        <CommandBinding Command="local:CMyCommands.sua" Executed="CommandBinding_Executed_suaSV" CanExecute="CommandBinding_CanExecute_suaSV"></CommandBinding>
+    </Window.CommandBindings>
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <StackPanel>
+            <StackPanel.Resources>
+                <Style TargetType="Label" x:Key="stLabel">
+                    <Setter Property="Margin" Value="20 0 "></Setter>
+                    <Setter Property="Width" Value="100"></Setter>
+                    <Setter Property="Height" Value="30"></Setter>
+                    <Setter Property="FontWeight" Value="Bold"></Setter>
+                </Style>
+
+                <Style TargetType="TextBox" x:Key="stTextBox">
+                    <Setter Property="Margin" Value="5"></Setter>
+                    <Setter Property="Width" Value="200"></Setter>
+                    <Setter Property="Height" Value="25"></Setter>
+                </Style>
+
+                <Style TargetType="ComboBox" x:Key="stTComboBox">
+                    <Setter Property="Margin" Value="5"></Setter>
+                    <Setter Property="Width" Value="200"></Setter>
+                </Style>
+
+                <Style TargetType="Button" x:Key="stButton">
+                    <Setter Property="Width" Value="70"></Setter>
+                    <Setter Property="Height" Value="25"></Setter>
+                    <Setter Property="Margin" Value="15 5 20 5"></Setter>
+                    <Setter Property="Background" Value="LightGray"></Setter>
+                </Style>
+                <Style TargetType="DatePicker" x:Key="stDatePicker">
+                    <Setter Property="Width" Value="200"></Setter>
+                    <Setter Property="Height" Value="25"></Setter>
+                    <Setter Property="Margin" Value="5"></Setter>
+                </Style>
+            </StackPanel.Resources>
+            <DockPanel>
+                <Label Content="QUẢN LÝ SINH VIÊN" FontSize="30" FontWeight="Bold" HorizontalAlignment="Center"></Label>
+            </DockPanel>
+            <DockPanel>
+                <StackPanel Margin="10 10 0 10" Width="400" >
+                    <DockPanel Margin="0 0 0 5">
+                        <Label Content="Mã sinh viên: " Style="{StaticResource ResourceKey=stLabel}"/>
+                        <TextBox Style="{StaticResource ResourceKey=stTextBox}" Text="{Binding masv,Mode=OneWay}" x:Name="txtMasv" />
+                    </DockPanel>
+
+                    <DockPanel Margin=" 0 0 0 5">
+                        <Label Content="Mã phòng: " Style="{StaticResource ResourceKey=stLabel}"/>
+                        <ComboBox  Style="{StaticResource ResourceKey=stTComboBox}" x:Name="cmbMaphong" SelectedValuePath="maphong" DisplayMemberPath="maphong"/>
+                    </DockPanel>
+
+                    <DockPanel Margin=" 0 0 0 5">
+                        <Label Content="Tên sinh viên: " Style="{StaticResource ResourceKey=stLabel}" VerticalAlignment="Center"/>
+                        <TextBox Text="{Binding tensv,Mode=OneWay}" Style="{StaticResource ResourceKey=stTextBox}" x:Name="txtTensv"/>
+                    </DockPanel>
+
+                    <DockPanel Margin=" 0 0 0 5">
+                        <Label Content="Ngày sinh: " Style="{StaticResource ResourceKey=stLabel}"/>
+                        <DatePicker  Style="{StaticResource ResourceKey=stDatePicker}" x:Name="dpNgaysinh"/>
+                    </DockPanel>
+
+                    <DockPanel Margin="0 0 0 5">
+                        <Label Content="Giới tính" Style="{StaticResource ResourceKey=stLabel}"></Label>
+                        <DockPanel>
+                            <RadioButton Content="Nam" Name="rdoNam" IsChecked="True" Margin="30 5 20 0" GroupName="gGioitinh"></RadioButton>
+                            <RadioButton Content="Nữ" Name="rdoNu" Margin="5" GroupName="gGioitinh"></RadioButton>
+                        </DockPanel>
+                    </DockPanel>
+                </StackPanel>
+
+                <StackPanel Margin="20 10 0 10" Width="400">
+                    <DockPanel Margin="0 0 0 5 ">
+                        <Label Content="Lớp: " Style="{StaticResource ResourceKey=stLabel}"/>
+                        <TextBox Text="{Binding lop,Mode=OneWay}" Style="{StaticResource ResourceKey=stTextBox}" x:Name="txtLop" Margin="0 0 00 0"/>
+                    </DockPanel>
+
+                    <DockPanel Margin=" 0 0 0 5">
+                        <Label Content="Điện thoại: " Style="{StaticResource ResourceKey=stLabel}"/>
+                        <TextBox Text="{Binding lop,Mode=OneWay}" Style="{StaticResource ResourceKey=stTextBox}" x:Name="txtDienthoai" />
+                    </DockPanel>
+
+                    <DockPanel Margin=" 0 0 0 5">
+                        <Label Content="Quê quán: " Style="{StaticResource ResourceKey=stLabel}"/>
+                        <TextBox Text="{Binding lop,Mode=OneWay}"  Style="{StaticResource ResourceKey=stTextBox}" x:Name="txtQuequan"/>
+                    </DockPanel>
+
+                    <DockPanel Margin="0 0 0 5">
+                        <Label Content="Tình trạng:" Style="{StaticResource ResourceKey=stLabel}"></Label>
+                        <DockPanel>
+                            <RadioButton Content="Chuẩn bị ở" Name="rdoChuanbio" GroupName="gTinhtrang" Margin="30 5 5 5" IsChecked="True"></RadioButton>
+                            <RadioButton Content="Đang ở" Name="rdoDango" GroupName="gTinhtrang" Margin="5"></RadioButton>
+                            <RadioButton Content="Đã ở" Name="rdoDao" GroupName="gTinhtrang" Margin="5"></RadioButton>
+                        </DockPanel>
+                    </DockPanel>
+                </StackPanel>
+            </DockPanel >
+            <DockPanel HorizontalAlignment="Center" Margin="0 0 0 10">
+                <Button Style="{StaticResource ResourceKey=stButton}" x:Name="btnThem" Content="Thêm" Command="local:CMyCommands.them"/>
+                <Button Style="{StaticResource ResourceKey=stButton}" x:Name="btnXoa" Content="Xóa" Command="local:CMyCommands.xoa"/>
+                <Button Style="{StaticResource ResourceKey=stButton}" x:Name="btnSua" Content="Sửa" Command="local:CMyCommands.sua"/>
+                <Button Style="{StaticResource ResourceKey=stButton}" x:Name="btnTimkiem" Content="Tìm kiếm" Command="local:CMyCommands.timkiem"/>
+                <Button Style="{StaticResource ResourceKey=stButton}" x:Name="btnLammoi" Content="Làm mới" Click="btnLammoi_Click" />
+                <Button Style="{StaticResource ResourceKey=stButton}" x:Name="btnThoat" Content="Thoát" Click="btnThoat_Click"/>
+            </DockPanel>
+            <Label Grid.Column="0" Grid.Row="0" Content="Danh sách sinh viên đang ở kí túc xá" FontStyle="Italic" FontWeight="Bold" FontSize="15" Margin="15 0 15 0"></Label>
+            <Expander>
+                <StackPanel>   
+                <DataGrid  Name="dgDSSVDango" AutoGenerateColumns="False" Margin="15 0 15 0" Height="200" SelectedValuePath="masv" SelectionChanged="dgDSSVDango_SelectionChanged" >
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Binding="{Binding masv}" ClipboardContentBinding="{x:Null}" Header="Mã sinh viên"/>
+                        <DataGridTextColumn Binding="{Binding maphong}" ClipboardContentBinding="{x:Null}" Header="Mã phòng"/>
+                        <DataGridTextColumn Binding="{Binding tensv}" ClipboardContentBinding="{x:Null}" Header="Tên sinh viên"/>
+                        <DataGridTextColumn Binding="{Binding ngaysinh}" ClipboardContentBinding="{x:Null}" Header="Ngày sinh"/>
+                        <DataGridTextColumn Binding="{Binding gioitinh}" ClipboardContentBinding="{x:Null}" Header="giới tính"/>
+                        <DataGridTextColumn Binding="{Binding lop}" ClipboardContentBinding="{x:Null}" Header="Lớp"/>
+                        <DataGridTextColumn Binding="{Binding dienthoai}" ClipboardContentBinding="{x:Null}" Header="Điện thoại"/>
+                        <DataGridTextColumn Binding="{Binding quequan}" ClipboardContentBinding="{x:Null}" Header="Quê quán"></DataGridTextColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+                </StackPanel>
+            </Expander>
+            <Label  Content="Danh sách sinh viên đã ở kí túc xá" FontStyle="Italic" FontWeight="Bold" FontSize="15" Margin="15 15 15 0"></Label>
+            <Expander>
+                <StackPanel>
+                    <DataGrid  Name="dgDSSVDao" AutoGenerateColumns="False" Margin="15 0 15 15" Height="200" SelectedValuePath="masv" SelectionChanged="dgDSSVDao_SelectionChanged">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Binding="{Binding masv}" ClipboardContentBinding="{x:Null}" Header="Mã sinh viên"/>
+                            <DataGridTextColumn Binding="{Binding maphong}" ClipboardContentBinding="{x:Null}" Header="Mã phòng"/>
+                            <DataGridTextColumn Binding="{Binding tensv}" ClipboardContentBinding="{x:Null}" Header="Tên sinh viên"/>
+                            <DataGridTextColumn Binding="{Binding ngaysinh}" ClipboardContentBinding="{x:Null}" Header="Ngày sinh"/>
+                            <DataGridTextColumn Binding="{Binding gioitinh}" ClipboardContentBinding="{x:Null}" Header="giới tính"/>
+                            <DataGridTextColumn Binding="{Binding lop}" ClipboardContentBinding="{x:Null}" Header="Lớp"/>
+                            <DataGridTextColumn Binding="{Binding dienthoai}" ClipboardContentBinding="{x:Null}" Header="Điện thoại"/>
+                            <DataGridTextColumn Binding="{Binding quequan}" ClipboardContentBinding="{x:Null}" Header="Quê quán"></DataGridTextColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+                </StackPanel>
+            </Expander>
+        </StackPanel>
+    </ScrollViewer>
+</Window>
